@@ -7,7 +7,7 @@ import {
   DropdownMenuItem, 
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
-import { Languages } from "lucide-react";
+import { Language } from "lucide-react";
 import { locales, dynamicActivate } from "@/i18n";
 
 export function LanguageSelector() {
@@ -29,7 +29,7 @@ export function LanguageSelector() {
           disabled={isLoading}
           aria-label="Select language"
         >
-          <Languages className="h-5 w-5" />
+          <Language className="h-5 w-5" />
           <span className="sr-only">Select language</span>
         </Button>
       </DropdownMenuTrigger>
