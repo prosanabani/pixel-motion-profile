@@ -1,0 +1,39 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: \n"
+
+#: src/components/sections/hero-section.tsx:99
+msgid "Hello, I'm"
+msgstr "Hello, I'm"
+
+#: src/components/sections/hero-section.tsx:112
+msgid "Mohammed Youssef"
+msgstr "Mohammed Youssef"
+
+#: src/components/sections/hero-section.tsx:113
+msgid "I make your website"
+msgstr "I make your website"
+
+#: src/components/sections/hero-section.tsx:126
+msgid "I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code."
+msgstr "I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code."
+
+#: src/components/sections/hero-section.tsx:146
+msgid "View My Work"
+msgstr "View My Work"
+
+#: src/components/sections/hero-section.tsx:161
+msgid "Contact Me"
+msgstr "Contact Me"
