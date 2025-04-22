@@ -6,9 +6,6 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { LanguageSelector } from "@/components/language-selector";
-import { i18n } from "@lingui/core";
-import { t } from "@lingui/macro";
 
 type NavItem = {
   name: string;
@@ -54,7 +51,7 @@ export function Navbar() {
         </Link>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-8">
             {navItems.map((item) => (
               <li key={item.name}>
@@ -82,30 +79,24 @@ export function Navbar() {
             ))}
           </ul>
           
-          <div className="flex items-center space-x-2">
-            <LanguageSelector />
-            
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              className="rounded-full"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? (
-                <Moon className="h-5 w-5" />
-              ) : (
-                <Sun className="h-5 w-5" />
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            className="rounded-full"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
         </div>
         
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-2">
-          <LanguageSelector />
-          
+        <div className="md:hidden flex items-center space-x-4">
           <Button
             variant="ghost"
             size="icon"

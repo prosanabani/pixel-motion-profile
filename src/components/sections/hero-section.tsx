@@ -1,12 +1,10 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSphere } from "@/components/3d/animated-sphere";
 import { Link } from "react-router-dom";
-import { i18n } from "@lingui/core";
-import { t, Trans } from "@lingui/macro";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -34,37 +32,11 @@ const buttonVariants = {
   },
 };
 
-const words = ["fast", "modern", "cute", "smooth", "animated"];
-
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [wordVisible, setWordVisible] = useState(true);
-  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
-
-    // Word animation
-    const wordInterval = setInterval(() => {
-      setWordVisible(false);
-      setTimeout(() => {
-        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-        setWordVisible(true);
-      }, 500); // Wait for fade out before changing word
-    }, 2000); // Total time per word
-
-    // Cursor blink animation
-    const cursorInterval = setInterval(() => {
-      if (cursorRef.current) {
-        cursorRef.current.style.opacity = cursorRef.current.style.opacity === "1" ? "0" : "1";
-      }
-    }, 530);
-
-    return () => {
-      clearInterval(wordInterval);
-      clearInterval(cursorInterval);
-    };
   }, []);
 
   return (
@@ -83,7 +55,7 @@ export function HeroSection() {
             variants={textVariants}
             className="text-lg font-medium text-primary"
           >
-            <Trans id="Hello, I'm">Hello, I'm</Trans>
+            Hello, I'm
           </motion.h2>
           
           <motion.h1
@@ -93,39 +65,19 @@ export function HeroSection() {
             variants={textVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
           >
-            <span className="text-gradient">
-              <Trans id="Mohammed Youssef">Mohammed Youssef</Trans>
-            </span>
-            <div className="flex items-center mt-2 h-12">
-              <Trans id="I make your website">I make your website</Trans>
-              <motion.div 
-                className="ml-2 inline-block"
-                animate={{ opacity: wordVisible ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <span className="text-accent">
-                  {words[currentWordIndex]}
-                </span>
-              </motion.div>
-            </div>
+            <span className="text-gradient">Mohammed Youssef</span>
+            <span className="block mt-2">Software Developer</span>
           </motion.h1>
           
-          <motion.div
+          <motion.p
             custom={2}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={textVariants}
-            className="text-lg text-muted-foreground max-w-lg relative pl-6"
+            className="text-lg text-muted-foreground max-w-lg"
           >
-            <div 
-              ref={cursorRef}
-              className="absolute left-0 top-0 bottom-0 w-1 bg-accent transition-opacity"
-              style={{ opacity: 1 }}
-            />
-            <Trans id="I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code.">
-              I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code.
-            </Trans>
-          </motion.div>
+            I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code.
+          </motion.p>
           
           <motion.div
             custom={3}
@@ -145,7 +97,7 @@ export function HeroSection() {
                 className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg transition-all duration-300 group"
               >
                 <Link to="/projects">
-                  <Trans id="View My Work">View My Work</Trans>
+                  View My Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
@@ -163,7 +115,7 @@ export function HeroSection() {
                 className="animated-border"
               >
                 <Link to="/contact">
-                  <Trans id="Contact Me">Contact Me</Trans>
+                  Contact Me
                 </Link>
               </Button>
             </motion.div>
