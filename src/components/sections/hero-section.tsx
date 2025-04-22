@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSphere } from "@/components/3d/animated-sphere";
-import { Link } from "react-router-dom";
-import { AnimatedWords } from "./AnimatedWords";
 import { AnimatedLetters } from "./AnimatedLetters";
 
 const textVariants = {
@@ -33,16 +31,6 @@ const buttonVariants = {
   },
 };
 
-// Blinking bar animation via Tailwind CSS inline
-const blinkingBarStyle = {
-  width: "3px",
-  height: "2.1rem",
-  borderRadius: "4px",
-  marginRight: "0.8rem",
-  background: "linear-gradient(180deg, #9b87f5, #8b5cf6, #1EAEDB)",
-  animation: "blinker 1s steps(1, end) infinite",
-};
-
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -51,12 +39,11 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center bg-grid">
+    <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center bg-grid pt-20">
       <div className="absolute inset-0 z-0 hero-glow">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/5 dark:to-secondary/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5" />
       </div>
-      
-      <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pt-24">
+      <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pt-10">
         {/* Text Content */}
         <div className="flex flex-col space-y-6">
           <motion.h2
@@ -68,7 +55,6 @@ export function HeroSection() {
           >
             Hello, I'm
           </motion.h2>
-          
           <motion.h1
             custom={1}
             initial="hidden"
@@ -78,7 +64,7 @@ export function HeroSection() {
           >
             <span className="text-gradient">Mohammed Youssef</span>
             <span className="block mt-2">
-              <span className="font-extralight text-white">
+              <span className="font-extralight text-white" style={{ fontWeight: 200 }}>
                 I make your website
               </span>{" "}
               <AnimatedLetters
@@ -88,23 +74,20 @@ export function HeroSection() {
               />
             </span>
           </motion.h1>
-          
           <motion.div
             custom={2}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={textVariants}
-            className="flex items-center text-lg text-muted-foreground max-w-lg"
+            className="flex items-start text-lg text-muted-foreground max-w-lg"
           >
             <span
-              style={blinkingBarStyle as React.CSSProperties}
-              className="animate-blink"
+              className="vertical-blink-bar"
             />
             <span>
               I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code.
             </span>
           </motion.div>
-          
           <motion.div
             custom={3}
             initial="hidden"
@@ -118,36 +101,18 @@ export function HeroSection() {
               whileTap="tap"
             >
               <Button
-                asChild
                 size="lg"
-                className="bg-gradient-to-r from-primary to-secondary hover:shadow-lg transition-all duration-300 group"
+                className="bg-gradient-to-r from-primary to-accent hover:shadow-lg transition-all duration-300 group"
+                asChild
               >
-                <Link to="/projects">
+                <a href="#about">
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </motion.div>
-            
-            <motion.div
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="animated-border"
-              >
-                <Link to="/contact">
-                  Contact Me
-                </Link>
+                </a>
               </Button>
             </motion.div>
           </motion.div>
         </div>
-        
         {/* 3D Animation */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -158,14 +123,6 @@ export function HeroSection() {
           <AnimatedSphere className="w-full h-full" />
         </motion.div>
       </div>
-      {/* CSS for blinking animation */}
-      <style>
-        {`
-          @keyframes blinker {
-            50% { opacity: 0; }
-          }
-        `}
-      </style>
     </section>
   );
 }

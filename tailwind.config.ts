@@ -20,45 +20,40 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        // light palette
+        background: "#FFFFFF",
+        foreground: "#00171F",
+        card: "#FFFFFF",
+        "card-foreground": "#00171F",
+        popover: "#FFFFFF",
+        "popover-foreground": "#00171F",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#003459",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#007EA7",
+          foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#00A8E8",
+          foreground: "#00171F",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        // Direct color values
-        "deep-blue": "#2563eb",
-        teal: "#0d9488",
-        "vibrant-orange": "#ea580c", 
-        "dark-slate": "#1e293b",
-        "off-white": "#f8fafc",
+        border: "#003459",
+        input: "#003459",
+        ring: "#00A8E8",
+        muted: "#e8e8e8",
+        "deep-blue": "#003459",
+        teal: "#007EA7",
+        "vibrant-orange": "#00A8E8",
+        "dark-slate": "#00171F",
+        "off-white": "#FFFFFF",
+        // dark palette
+        "dm-background": "#121212",
+        "dm-00171f": "#000D12",
+        "dm-003459": "#002A43",
+        "dm-007EA7": "#00607D",
+        "dm-00A8E8": "#0088C5",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -69,53 +64,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        slideInRight: {
-          "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(0)" },
-        },
-        slideInLeft: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0)" },
-        },
-        zoomIn: {
-          "0%": { transform: "scale(0.8)", opacity: "0" },
-          "100%": { transform: "scale(1)", opacity: "1" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        pulse: {
+        "blinker": {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
-        },
-        "spin-slow": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+          "50%": { opacity: "0" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fadeIn 0.5s ease-out forwards",
-        "slide-in-right": "slideInRight 0.5s ease-out forwards",
-        "slide-in-left": "slideInLeft 0.5s ease-out forwards",
-        "zoom-in": "zoomIn 0.5s ease-out forwards",
-        "float": "float 6s infinite ease-in-out",
-        "pulse": "pulse 3s infinite ease-in-out",
-        "spin-slow": "spin-slow 15s linear infinite",
+        blinker: "blinker 1s steps(1, end) infinite",
       },
     },
   },
