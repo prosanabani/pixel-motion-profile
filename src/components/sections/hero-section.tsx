@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { AnimatedSphere } from "@/components/3d/animated-sphere";
 import { Link } from "react-router-dom";
 import { AnimatedWords } from "./AnimatedWords";
+import { AnimatedLetters } from "./AnimatedLetters";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -78,11 +78,13 @@ export function HeroSection() {
           >
             <span className="text-gradient">Mohammed Youssef</span>
             <span className="block mt-2">
-              I make your website{" "}
-              <AnimatedWords
+              <span className="font-extralight text-white">
+                I make your website
+              </span>{" "}
+              <AnimatedLetters
                 words={["fast", "modern", "cute", "smooth", "animated"]}
-                className="text-accent font-extrabold"
-                duration={1650}
+                className="text-white font-bold"
+                duration={1700}
               />
             </span>
           </motion.h1>
@@ -167,4 +169,3 @@ export function HeroSection() {
     </section>
   );
 }
-
