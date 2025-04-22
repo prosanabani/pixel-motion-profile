@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSphere } from "@/components/3d/animated-sphere";
 import { Link } from "react-router-dom";
+import { AnimatedWords } from "./AnimatedWords";
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -30,6 +31,16 @@ const buttonVariants = {
   tap: {
     scale: 0.95,
   },
+};
+
+// Blinking bar animation via Tailwind CSS inline
+const blinkingBarStyle = {
+  width: "3px",
+  height: "2.1rem",
+  borderRadius: "4px",
+  marginRight: "0.8rem",
+  background: "linear-gradient(180deg, #9b87f5, #8b5cf6, #1EAEDB)",
+  animation: "blinker 1s steps(1, end) infinite",
 };
 
 export function HeroSection() {
@@ -66,18 +77,31 @@ export function HeroSection() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
           >
             <span className="text-gradient">Mohammed Youssef</span>
-            <span className="block mt-2">Software Developer</span>
+            <span className="block mt-2">
+              I make your website{" "}
+              <AnimatedWords
+                words={["fast", "modern", "cute", "smooth", "animated"]}
+                className="text-accent font-extrabold"
+                duration={1650}
+              />
+            </span>
           </motion.h1>
           
-          <motion.p
+          <motion.div
             custom={2}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             variants={textVariants}
-            className="text-lg text-muted-foreground max-w-lg"
+            className="flex items-center text-lg text-muted-foreground max-w-lg"
           >
-            I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code.
-          </motion.p>
+            <span
+              style={blinkingBarStyle as React.CSSProperties}
+              className="animate-blink"
+            />
+            <span>
+              I create intuitive and performant web experiences using cutting-edge technologies. Focused on delivering clean, maintainable, and efficient code.
+            </span>
+          </motion.div>
           
           <motion.div
             custom={3}
@@ -132,6 +156,15 @@ export function HeroSection() {
           <AnimatedSphere className="w-full h-full" />
         </motion.div>
       </div>
+      {/* CSS for blinking animation */}
+      <style>
+        {`
+          @keyframes blinker {
+            50% { opacity: 0; }
+          }
+        `}
+      </style>
     </section>
   );
 }
+
