@@ -1,11 +1,9 @@
 
-import { motion } from "framer-motion";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { HeroSection } from "@/components/sections/hero-section";
-import { AboutSection } from "@/components/sections/about-section";
+import { motion } from "framer-motion";
 
-const Index = () => {
+const Projects = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -14,13 +12,15 @@ const Index = () => {
       className="min-h-screen bg-background"
     >
       <Navbar />
-      <main>
-        <HeroSection />
-        <AboutSection />
+      <main className="pt-24 px-4">
+        <div className="container mx-auto py-10">
+          <h1 className="text-4xl font-bold mb-8">Projects</h1>
+          <p className="text-muted-foreground">Coming soon - Project showcase section</p>
+        </div>
       </main>
       <Footer />
     </motion.div>
   );
 };
 
-export default Index;
+export default Projects;

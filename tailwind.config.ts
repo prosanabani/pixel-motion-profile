@@ -20,40 +20,45 @@ export default {
     },
     extend: {
       colors: {
-        // light palette
-        background: "#FFFFFF",
-        foreground: "#00171F",
-        card: "#FFFFFF",
-        "card-foreground": "#00171F",
-        popover: "#FFFFFF",
-        "popover-foreground": "#00171F",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#003459",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#007EA7",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#00A8E8",
-          foreground: "#00171F",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
-        border: "#003459",
-        input: "#003459",
-        ring: "#00A8E8",
-        muted: "#e8e8e8",
-        "deep-blue": "#003459",
-        teal: "#007EA7",
-        "vibrant-orange": "#00A8E8",
-        "dark-slate": "#00171F",
-        "off-white": "#FFFFFF",
-        // dark palette
-        "dm-background": "#121212",
-        "dm-00171f": "#000D12",
-        "dm-003459": "#002A43",
-        "dm-007EA7": "#00607D",
-        "dm-00A8E8": "#0088C5",
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        // Direct color values
+        "deep-blue": "#2563eb",
+        teal: "#0d9488",
+        "vibrant-orange": "#ea580c", 
+        "dark-slate": "#1e293b",
+        "off-white": "#f8fafc",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -64,13 +69,53 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "blinker": {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideInRight: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        slideInLeft: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        zoomIn: {
+          "0%": { transform: "scale(0.8)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        pulse: {
           "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
+          "50%": { opacity: "0.5" },
+        },
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
       animation: {
-        blinker: "blinker 1s steps(1, end) infinite",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out forwards",
+        "slide-in-right": "slideInRight 0.5s ease-out forwards",
+        "slide-in-left": "slideInLeft 0.5s ease-out forwards",
+        "zoom-in": "zoomIn 0.5s ease-out forwards",
+        "float": "float 6s infinite ease-in-out",
+        "pulse": "pulse 3s infinite ease-in-out",
+        "spin-slow": "spin-slow 15s linear infinite",
       },
     },
   },
